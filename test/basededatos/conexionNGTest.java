@@ -41,9 +41,9 @@ public class conexionNGTest {
      * Test of conectar method, of class conexion.
      */
     @Test
-    public void testConectar() {
+    public void testConectar() throws ClassNotFoundException {
         System.out.println("conectar");
-        conexion instance = new conexion();
+        Conexion instance = new Conexion();
         Connection expResult = null;
         Connection result = instance.conectar();
         assertEquals(result, expResult);

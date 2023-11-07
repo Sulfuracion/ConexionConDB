@@ -16,12 +16,14 @@ import javax.swing.JOptionPane;
 import com.mysql.cj.jdbc.Driver;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.sql.*;  
 
 /**
  *
  * @author 2dam
  */
-public class conexion {
+public class Conexion {
+    PreparedStatement pr;
     //declara la conexion
     public static Connection con;
     //datos de conexion DB
@@ -38,7 +40,7 @@ public class conexion {
             //Class.forName(driver);
             con=(Connection) DriverManager.getConnection(url, user, pass);
             if(con!=null){
-                
+                //System.out.print("No se conecta");
             }
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "error" + e.toString());
@@ -51,6 +53,26 @@ public class conexion {
     return con;
     
     } 
+    
+    public int Add(String nombre, String apellidos, String tlfo, String mial, String direccion){
+        int res=0;
+        try {
+            pr=con.prepareStatement("insert into Personas(Nombre, Apellidos, Tlf1, Email, Dirección) values (?,?,?,?,?)");
+            pr.setString(1, nombre);
+            pr.setString(2, apellidos);
+            pr.setString(3, tlfo);
+            pr.setString(4, mial);
+            pr.setString(5, direccion);
+            res=pr.executeUpdate();
+            System.out.print("Persona registrada correctamente");
+        } catch (SQLException ex) {
+            System.out.print("no registra");
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      
+        return res;
+      
+    }
     
     
 }
