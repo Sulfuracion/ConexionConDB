@@ -11,6 +11,8 @@ CREATE TABLE Personas (
 alter table Personas
 add constraint check_email check (Email like '%@s%');
 
+
+
 -- Ejemplo 1
 INSERT INTO Personas (Nombre, Apellidos, Tlf1, Email, Dirección)
 VALUES ('Juan', 'Pérez', '555-123-456', 'juan@email.com', 'Calle Principal 123');

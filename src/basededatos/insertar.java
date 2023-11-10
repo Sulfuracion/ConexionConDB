@@ -204,6 +204,12 @@ public class insertar extends javax.swing.JPanel {
     }//GEN-LAST:event_AreaNombreActionPerformed
 
     private void AceptarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarBotonActionPerformed
+       ejecutarAdd();
+       Window w = SwingUtilities.getWindowAncestor(insertar.this);
+        w.setVisible(false);
+    }//GEN-LAST:event_AceptarBotonActionPerformed
+
+    public void ejecutarAdd(){
        Conexion con =new Conexion();
        String nombre= AreaNombre.getText();
        String ape= AreaApellido.getText();
@@ -211,9 +217,9 @@ public class insertar extends javax.swing.JPanel {
        String mail=AreaEmail.getText();
        String direc= AreaDireccion.getText();
        con.Add(nombre, ape, tfo, mail, direc);
-    }//GEN-LAST:event_AceptarBotonActionPerformed
-
-
+       
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AceptarBoton;
     private javax.swing.JTextField AreaApellido;

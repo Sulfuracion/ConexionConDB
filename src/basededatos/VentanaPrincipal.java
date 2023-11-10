@@ -114,6 +114,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        visor.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        visor.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(visor);
 
         add.setText("Añadir");
@@ -124,6 +126,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         Eliminar.setText("Eliminar");
+        Eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -183,6 +190,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         frame.setVisible(true);
     }//GEN-LAST:event_addActionPerformed
 
+    private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
+        Conexion con =new Conexion();
+        if( visor.getSelectedRow()==-1){
+            System.out.print("Seleccione una columna primero");
+        }else{
+            String valorColumna= String.valueOf(visor.getValueAt(visor.getSelectedRow(), 0));
+            con.delete(valorColumna);
+        }
+       
+        
+        
+    }//GEN-LAST:event_EliminarActionPerformed
+
+
+    
+    
     /**
      * @param args the command line arguments
      */

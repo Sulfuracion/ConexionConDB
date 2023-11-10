@@ -12,7 +12,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-//import static BasedeDatos.conexion.con;
+import static basededatos.Conexion.con;
 import com.mysql.cj.jdbc.Driver;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +22,7 @@ import java.sql.*;
  *
  * @author 2dam
  */
-public class Conexion {
+    public class Conexion {
     PreparedStatement pr;
     //declara la conexion
     public static Connection con;
@@ -64,7 +64,7 @@ public class Conexion {
             pr.setString(4, mial);
             pr.setString(5, direccion);
             res=pr.executeUpdate();
-            System.out.print("Persona registrada correctamente");
+            System.out.print(" Persona registrada correctamente");
         } catch (SQLException ex) {
             System.out.print("no registra");
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
@@ -72,6 +72,26 @@ public class Conexion {
       
         return res;
       
+    }
+    
+
+    
+    public int delete(String codigo){
+        int res=0;
+        try{
+            pr=con.prepareStatement("delete from Personas where Código ='" + codigo + "'");
+            res=pr.executeUpdate();
+             System.out.print(" Persona eliminada correctamente");
+        } catch (SQLException ex) {
+            System.out.print(" no se pudo elimiar");
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        
+        
+        return res;
     }
     
     
